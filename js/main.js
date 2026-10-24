@@ -1,16 +1,17 @@
-// Trump Wif Sword — paste values when the coin is live.
-// ca: the Pump.fun mint address. Leave "" until it exists.
+// Trump Wif Sword — paste the real mint when the coin is live.
+// ca: a Solana mint address, or "TBA" until it exists.
 // twitter / telegram: full URLs, or "" to hide the buttons.
 const SITE = {
   name: "Trump Wif Sword",
   ticker: "SWORDTRUMP",
-  ca: "",
+  ca: "TBA",
   twitter: "https://x.com/swordtrump_x",
   telegram: "https://t.me/swordtrump_tg",
 };
 
 const ca = (SITE.ca || "").trim();
-const pumpUrl = ca ? `https://pump.fun/coin/${ca}` : "https://pump.fun";
+const live = /^[1-9A-HJ-NP-Za-km-z]{32,44}$/.test(ca);
+const pumpUrl = live ? `https://pump.fun/coin/${ca}` : "https://pump.fun";
 
 function shorten(value) {
   if (value.length <= 18) return value;
@@ -35,21 +36,23 @@ function hydrate() {
   const chip = document.getElementById("caChip");
   const footer = document.getElementById("footerMint");
 
-  if (ca) {
+  if (live) {
     code.textContent = shorten(ca);
     code.title = ca;
     action.textContent = "Copy";
     chip.setAttribute("aria-label", `Copy mint address ${ca}`);
     footer.textContent = `Mint: ${ca}`;
   } else {
-    code.textContent = "4aXgfAGQVf9yHELojf7VM7eMWWr6gfxTkfLmfViQpump";
+    const label = ca || "TBA";
+    code.textContent = label;
+    code.removeAttribute("title");
     action.textContent = "Soon";
-    chip.setAttribute("aria-label", "Mint address 4aXgfAGQVf9yHELojf7VM7eMWWr6gfxTkfLmfViQpump");
-    footer.textContent = "Mint: 4aXgfAGQVf9yHELojf7VM7eMWWr6gfxTkfLmfViQpump";
+    chip.setAttribute("aria-label", `Mint address ${label}`);
+    footer.textContent = `Mint: ${label}`;
   }
 
   const dex = document.getElementById("linkDex");
-  if (ca && dex) {
+  if (live && dex) {
     dex.href = `https://dexscreener.com/solana/${ca}`;
     dex.hidden = false;
   }
@@ -72,8 +75,8 @@ function hydrate() {
 }
 
 async function copyMint() {
-  if (!ca) {
-    toast("Mint 4aXgfAGQVf9yHELojf7VM7eMWWr6gfxTkfLmfViQpump.");
+  if (!live) {
+    toast(`Mint is ${ca || "TBA"}.`);
     return;
   }
   try {
