@@ -3,7 +3,7 @@
 // twitter / telegram: full URLs, or "" to hide the buttons.
 const SITE = {
   name: "Trump Wif Sword",
-  ticker: "SWORDTRUMP",
+  ticker: "swordtrump",
   ca: "695GFRfS68RW4vVwAmPRUrLqqE5f5a5JfGhRZG5Hpump",
   twitter: "https://x.com/swordtrump_x",
   telegram: "https://t.me/swordtrump_tg",

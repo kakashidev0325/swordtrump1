@@ -309,10 +309,15 @@ h2 { font-size: clamp(2rem, 4.4vw, 3.45rem); max-width: 16ch; }
 
 .ticker {
   margin: 0.35rem 0 0;
-  font-family: var(--serif);
-  font-size: clamp(1.1rem, 2vw, 1.4rem);
-  letter-spacing: 0.22em;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: clamp(1.35rem, 2.4vw, 1.8rem);
+  letter-spacing: 0.08em;
+  text-transform: none;
 }
+
+.tick { text-transform: none; }
 
 .tagline {
   margin: 0.85rem auto 0;
@@ -448,6 +453,11 @@ h2 { font-size: clamp(2rem, 4.4vw, 3.45rem); max-width: 16ch; }
 }
 
 .marquee i { color: var(--red); font-style: normal; }
+
+.marquee .tick {
+  letter-spacing: 0.08em;
+  text-transform: none;
+}
 
 /* Sections */
 
