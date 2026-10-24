@@ -1,10 +1,10 @@
 // Trump Wif Sword — paste the real mint when the coin is live.
-// ca: a Solana mint address, or "TBA" until it exists.
+// ca: a Solana mint address, or "695GFRfS68RW4vVwAmPRUrLqqE5f5a5JfGhRZG5Hpump" until it exists.
 // twitter / telegram: full URLs, or "" to hide the buttons.
 const SITE = {
   name: "Trump Wif Sword",
   ticker: "SWORDTRUMP",
-  ca: "TBA",
+  ca: "695GFRfS68RW4vVwAmPRUrLqqE5f5a5JfGhRZG5Hpump",
   twitter: "https://x.com/swordtrump_x",
   telegram: "https://t.me/swordtrump_tg",
 };
@@ -43,7 +43,7 @@ function hydrate() {
     chip.setAttribute("aria-label", `Copy mint address ${ca}`);
     footer.textContent = `Mint: ${ca}`;
   } else {
-    const label = ca || "TBA";
+    const label = ca || "695GFRfS68RW4vVwAmPRUrLqqE5f5a5JfGhRZG5Hpump";
     code.textContent = label;
     code.removeAttribute("title");
     action.textContent = "Soon";
@@ -76,7 +76,7 @@ function hydrate() {
 
 async function copyMint() {
   if (!live) {
-    toast(`Mint is ${ca || "TBA"}.`);
+    toast(`Mint is ${ca || "695GFRfS68RW4vVwAmPRUrLqqE5f5a5JfGhRZG5Hpump"}.`);
     return;
   }
   try {
